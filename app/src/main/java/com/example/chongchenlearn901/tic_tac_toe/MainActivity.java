@@ -4,11 +4,11 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -91,29 +91,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initComponents() {
-        ImageView iv1 = findViewById(R.id.imageView1);
-        ImageView iv2 = findViewById(R.id.imageView2);
-        ImageView iv3 = findViewById(R.id.imageView3);
-        ImageView iv4 = findViewById(R.id.imageView4);
-        ImageView iv5 = findViewById(R.id.imageView5);
-        ImageView iv6 = findViewById(R.id.imageView6);
-        ImageView iv7 = findViewById(R.id.imageView7);
-        ImageView iv8 = findViewById(R.id.imageView8);
-        ImageView iv9 = findViewById(R.id.imageView9);
-
         this.btnRestart = findViewById(R.id.btnRestart);
-
-        this.ivList = new ArrayList<>(Arrays.asList(
-                iv1,
-                iv2,
-                iv3,
-                iv4,
-                iv5,
-                iv6,
-                iv7,
-                iv8,
-                iv9
-        ));
+        GridLayout gl = findViewById(R.id.gridLayout);
+        this.ivList = new ArrayList<>();
+        for(int i = 0; i < gl.getChildCount(); i++){
+            this.ivList.add((ImageView) gl.getChildAt(i));
+        }
     }
 
     private tableStateE getWinner() {
